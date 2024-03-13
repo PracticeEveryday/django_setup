@@ -8,7 +8,7 @@ from django.shortcuts import render
 # 웹 페이지에 접속한다 -> 페이지를 본다.
 # URL 입력 -> 웹 서버가 뷰를 찾아서 동작시킨다. -> 응답을 진행한다.
 from django.views.generic.list import ListView
-from django.views.generic import CreateView
+from django.views.generic import CreateView, UpdateView
 from django.urls import reverse_lazy
 from .models import Bookmark
 from django.views.generic.detail import DetailView
@@ -29,3 +29,8 @@ class BookmarkCreateView(CreateView):
 
 class BookmarkDetailView(DetailView):
     model = Bookmark
+
+class BookmarkUpdateView(UpdateView):
+    model = Bookmark
+    fields = ['site_name', 'url']
+    template_name_suffix = '_update'

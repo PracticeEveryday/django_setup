@@ -10,5 +10,6 @@ urlpatterns = [
     # urlpattenr의 이름이 3번째 매개변수의 name이다.
     path("", BookmarkListView.as_view(), name='list'),
     path("add/", BookmarkCreateView.as_view(), name='add'),
-    path("detail/<int:pk>/", BookmarkDetailView.as_view(), name='detail')
+    path("detail/<int:pk>/", BookmarkDetailView.as_view(), name='detail'),
+    path("update/<int:pk>/", BookmarkUpdateView.as_view(), name='update')
 ]

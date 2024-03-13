@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import reverse
 # Create your models here.
 # 모델: 데이터베이스를 SQL 없이 다루기 위해 모델을 사용한다.
 # 우리가 데이터를 객체화하여 다루겠다!
@@ -24,6 +24,11 @@ class Bookmark(models.Model):
     # 용도가 정해져 있는 애들은 앞뒤로 __가 붙어 있다.
     def __str__(self):
         return "이름: " + self.site_name + ", 주소: " + self.url
+
+
+    # 수정 후 페이지 이동 가능
+    def get_absolute_url(self):
+        return reverse('detail', args=[str(self.id)])
 
 
 # 모델을 만들었다. => 데이터 베이스에 어떤 데이터들을 어떤 형태로 넣을지 결정
